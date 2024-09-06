@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Function;
 
 /**
  * A serializable representation of a mission model-specific activity parameter domain object.
@@ -27,7 +26,7 @@ import java.util.function.Function;
  * code would need to know about all possible subclasses for deserialization). The Visitor
  * pattern on a class closed to extension allows us to guarantee that no ambiguity occurs.
  */
-public sealed interface SerializedValue extends Comparable<SerializedValue>, Function<T, U> {
+public sealed interface SerializedValue extends Comparable<SerializedValue> {
   SerializedValue NULL = SerializedValue.ofNull();
 
   /**
