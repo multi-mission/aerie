@@ -8,6 +8,7 @@ import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resources;
 import gov.nasa.jpl.aerie.contrib.streamline.core.monads.ThinResourceMonad;
 import gov.nasa.jpl.aerie.contrib.streamline.debugging.Logging;
+import gov.nasa.jpl.aerie.contrib.streamline.debugging.Naming;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.monads.DiscreteResourceMonad;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.linear.Linear;
@@ -36,7 +37,7 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.waitUntil;
  * </p>
  */
 public class Registrar {
-  private final gov.nasa.jpl.aerie.merlin.framework.Registrar baseRegistrar;
+  public final gov.nasa.jpl.aerie.merlin.framework.Registrar baseRegistrar;
   private boolean trace = false;
   private boolean profile = false;
   private final ErrorBehavior errorBehavior;
@@ -77,6 +78,14 @@ public class Registrar {
 
   public void clearProfile() {
     profile = false;
+  }
+
+  /**
+   * Overload of {@link Registrar#discrete(String, Resource, ValueMapper)}
+   * using the name for resource registered with {@link Naming#name}.
+   */
+  public <Value> void discrete(final Resource<Discrete<Value>> resource, final ValueMapper<Value> mapper) {
+    discrete(getName(resource, null), resource, mapper);
   }
 
   public <Value> void discrete(final String name, final Resource<Discrete<Value>> resource, final ValueMapper<Value> mapper) {
