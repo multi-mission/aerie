@@ -45,4 +45,6 @@ include 'stateless-aerie'
 include 'orchestration-utils'
 include 'type-utils'
 include 'examples:command-model'
+include 'examples:command-expansion'
+findProject(':examples:command-expansion')?.name = 'command-expansion'
 
