@@ -13,7 +13,7 @@ public final class Mission {
   public final ApproximationModel approximationModel;
 
   public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar$, final Instant planStart, final Configuration config) {
-    var registrar = new Registrar(registrar$, planStart, Registrar.ErrorBehavior.Log);
+    var registrar = new Registrar(registrar$, Registrar.ErrorBehavior.Log);
     if (config.traceResources) registrar.setTrace();
     if (config.profileResources) Resource.profileAllResources();
     dataModel = new DataModel(registrar, config);

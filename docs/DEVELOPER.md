@@ -84,7 +84,7 @@ To run the Aerie services you need to first set the proper environment variables
 
 ```sh
 cd aerie
-cp .env.template .env
+cp .env .env
 ```
 
 Fill out the `.env` file with the following default environment variables (note you should **not** use these values in production):
